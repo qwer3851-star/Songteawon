@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101419">
+<title>송태원의 휴대폰</title>
+<style>
+:root{--bg:#0e1116;--panel:#171c23;--panel2:#202731;--line:#303844;--text:#f3f5f8;--muted:#9da8b6;--accent:#b7c7d9;--green:#b5d9c2;--shadow:0 24px 80px #0009}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 20%,#28313c 0,#12161c 48%,#090b0f 100%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+button,input,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{width:min(100%,390px)}.caption{text-align:center;color:#c5cbd3;font-size:12px;letter-spacing:.16em;margin:0 0 14px}
+.phone{height:min(820px,calc(100dvh - 60px));min-height:600px;width:100%;border:7px solid #080a0d;border-radius:42px;background:#101419;box-shadow:var(--shadow),inset 0 0 0 1px #4b535d;overflow:hidden;position:relative}
+.phone:before{content:"";position:absolute;z-index:20;top:8px;left:50%;transform:translateX(-50%);width:90px;height:20px;background:#050608;border-radius:20px}
+.status{height:35px;padding:12px 22px 0;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:650;position:relative;z-index:3;background:#11161c}
+.status-right{display:flex;gap:5px;align-items:center}.signal{letter-spacing:-2px;font-size:12px}
+.screen{height:calc(100% - 61px);position:relative;overflow:hidden;background:#121820}
+.navbar{height:26px;position:absolute;bottom:0;left:0;right:0;background:#11161c;display:flex;align-items:center;justify-content:center;z-index:30}.gesture{width:104px;height:4px;border-radius:5px;background:#e6e9ed}
+.wallpaper{position:absolute;inset:0;background:linear-gradient(160deg,#344252 0%,#1d2936 36%,#111820 72%,#0b0f14 100%);overflow:hidden}
+.wallpaper:before{content:"";position:absolute;width:270px;height:270px;border-radius:50%;border:1px solid #ffffff12;right:-85px;top:80px;box-shadow:0 0 0 24px #ffffff05,0 0 0 55px #ffffff04}
+.wallpaper:after{content:"";position:absolute;inset:auto -10% 0;height:42%;background:linear-gradient(0deg,#090d12b8,transparent)}
+.lock-content{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;padding:58px 24px 25px;text-align:center}
+.lock-date{font-size:14px;color:#e1e7ee;letter-spacing:.03em}.lock-time{font-size:68px;font-weight:250;line-height:1.1;letter-spacing:-.06em;margin-top:8px;font-variant-numeric:tabular-nums}
+.lock-quote{margin-top:28px;font-size:13px;line-height:1.8;color:#d7dfe8;max-width:270px;text-shadow:0 1px 10px #0005}
+.lock-spacer{flex:1}.lock-bottom{width:100%}.hint{font-size:12px;color:#d0d8e2;margin-bottom:14px}.unlock-btn{background:#ffffff1a;border:1px solid #ffffff40;border-radius:18px;padding:12px 20px;width:100%;backdrop-filter:blur(10px)}
+.small-note{font-size:11px;color:#aeb9c7;margin-top:12px}
+.home{height:100%;position:relative;background:linear-gradient(160deg,#263544 0%,#17222e 50%,#111820 100%);padding:27px 19px 20px;display:flex;flex-direction:column}
+.home:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 18%,#8092a41b,transparent 30%),linear-gradient(180deg,transparent 60%,#0b1119a6);pointer-events:none}
+.home>*{position:relative}.home-date{font-size:13px;color:#d2dbe5}.home-clock{font-size:47px;font-weight:250;letter-spacing:-.05em;line-height:1.2;margin-top:5px}.greeting{margin-top:8px;color:#b9c7d6;font-size:12px}
+.searchbar{display:flex;align-items:center;gap:9px;margin-top:23px;background:#ffffff12;border:1px solid #ffffff13;border-radius:20px;padding:11px 14px;color:#c9d3de;font-size:12px}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 8px;margin-top:27px}.app-icon{display:flex;flex-direction:column;align-items:center;gap:7px;background:none;padding:0;min-width:0}.app-icon .glyph{width:52px;height:52px;border-radius:17px;display:grid;place-items:center;font-size:24px;box-shadow:0 5px 14px #0002;border:1px solid #ffffff20}.app-icon .app-label{font-size:11px;color:#e8edf3;white-space:nowrap}.g-messages{background:linear-gradient(145deg,#7da88f,#47765e)}.g-gallery{background:linear-gradient(145deg,#d3b8a0,#7e94a9)}.g-phone{background:linear-gradient(145deg,#a4c5a6,#5c8d71)}.g-notes{background:linear-gradient(145deg,#e0d5a5,#9c946d)}.g-social{background:linear-gradient(145deg,#b6a4c9,#6d698f)}.g-calendar{background:linear-gradient(145deg,#e1aaa5,#a65f64)}.g-settings{background:linear-gradient(145deg,#aab7c7,#647487)}.dock{margin-top:auto;background:#ffffff12;border:1px solid #ffffff12;border-radius:23px;padding:12px 8px;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.dock .glyph{width:48px;height:48px;border-radius:16px}
+.home-footer{text-align:center;font-size:10px;color:#aab7c5;margin-top:13px}
+.appview{height:100%;display:flex;flex-direction:column;background:#111820}.app-header{padding:19px 18px 14px;background:#151d26;border-bottom:1px solid #29323e;display:flex;align-items:center;gap:12px;flex-shrink:0}.back{width:34px;height:34px;border-radius:50%;background:#ffffff0d;font-size:20px}.app-title{font-size:18px;font-weight:650}.app-subtitle{font-size:11px;color:var(--muted);margin-top:2px}.app-body{padding:16px;overflow:auto;flex:1}.card{background:#1b242e;border:1px solid #2a3542;border-radius:17px;padding:14px;margin-bottom:11px}.muted{color:var(--muted);font-size:12px}.row{display:flex;align-items:center;gap:11px}.avatar{width:42px;height:42px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#b4c4d4,#596b7f);color:#14202b;font-weight:750}.avatar.gold{background:linear-gradient(135deg,#e2c99b,#9c7d48)}.avatar.green{background:linear-gradient(135deg,#b4d4bd,#628b70)}
+.bubble{padding:10px 12px;border-radius:15px;max-width:86%;font-size:13px;line-height:1.6;margin:9px 0}.bubble.them{background:#26313d;border-top-left-radius:4px}.bubble.me{background:#496654;margin-left:auto;border-top-right-radius:4px}.chatdate{text-align:center;color:#8290a0;font-size:10px;margin:15px 0}.message-compose{display:flex;gap:8px;padding:10px;background:#151d26;border-top:1px solid #29323e}.message-compose input{min-width:0;flex:1;border:1px solid #34404e;background:#202a35;color:white;border-radius:20px;padding:11px 13px}.send{border-radius:50%;width:40px;height:40px;background:#a9c8b3;color:#142018;font-weight:bold}
+.section-title{font-size:12px;color:#b8c4d2;margin:18px 0 9px}.listrow{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #29323e}.listrow:last-child{border-bottom:0}.listrow .grow{flex:1;min-width:0}.listrow strong{font-size:13px;font-weight:600}.listrow p{margin:4px 0 0;font-size:11px;color:#9da8b6;line-height:1.5}
+.primary{background:#c2d1df;color:#18222c;border-radius:12px;padding:11px 14px;font-weight:650;font-size:12px}.secondary{background:#283340;border:1px solid #3a4654;border-radius:12px;padding:10px 12px;font-size:12px}.field{width:100%;background:#121920;border:1px solid #35414e;color:#f3f5f8;border-radius:12px;padding:11px 12px;margin:5px 0 12px}.field-label{display:block;font-size:12px;color:#b9c4d0;margin-top:10px}.note-text{white-space:pre-wrap;font-size:13px;line-height:1.7;color:#dbe2e9}.social-post{background:#1a232d;border:1px solid #2c3744;border-radius:17px;overflow:hidden;margin-bottom:14px}.post-head{display:flex;align-items:center;gap:9px;padding:12px}.post-image{height:170px;background:linear-gradient(145deg,#6d7d88,#293d4b 55%,#17232d);display:flex;align-items:center;justify-content:center;color:#d8e0e8;font-size:12px;letter-spacing:.1em}.post-copy{padding:12px;font-size:12px;line-height:1.7}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}.calendar-grid div{font-size:11px;padding:9px 0;border-radius:10px;color:#cbd4de}.calendar-grid .weekday{color:#8290a0;font-size:10px}.calendar-grid .today{background:#c2d1df;color:#17212a;font-weight:800}.calendar-grid .eventday{border:1px solid #7fa18b}.event{display:flex;gap:11px;margin-top:12px;padding:12px;border-radius:13px;background:#1d2832}.event-time{font-size:11px;color:#b9c9d8;min-width:48px}.event-title{font-size:12px;font-weight:600}.event-desc{font-size:11px;color:#9ca9b7;margin-top:4px}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.photo{aspect-ratio:1/1;border-radius:15px;display:flex;align-items:end;padding:10px;font-size:11px;color:#f3f5f8;background:linear-gradient(145deg,#a6b6c2,#435665 55%,#18242e);position:relative;overflow:hidden}.photo:nth-child(2){background:linear-gradient(145deg,#dfc5a4,#887e77 52%,#303e4b)}.photo:nth-child(3){background:linear-gradient(145deg,#7e9a8b,#344c48 55%,#172720)}.photo:nth-child(4){background:linear-gradient(145deg,#8e9eb8,#45516a 55%,#202a3b)}.photo:before{content:"";position:absolute;width:120px;height:120px;border:1px solid #ffffff55;border-radius:50%;top:-25px;right:-20px;box-shadow:0 0 0 15px #ffffff12}.photo span{position:relative;z-index:1;text-shadow:0 1px 8px #000}
+.toast{position:absolute;left:20px;right:20px;bottom:44px;background:#e4eaf0;color:#1a222c;padding:12px 15px;border-radius:13px;font-size:12px;z-index:40;box-shadow:0 8px 25px #0005;display:none}
+.lock-overlay{position:absolute;inset:0;z-index:10;background:#111820;display:none;flex-direction:column}.pin-top{padding:42px 24px 12px;text-align:center}.pin-title{font-size:20px;font-weight:650;margin-top:15px}.pin-sub{font-size:12px;color:#9da8b6;margin-top:7px;line-height:1.6}.pin-dots{display:flex;justify-content:center;gap:15px;margin:28px 0 20px}.pin-dot{width:10px;height:10px;border:1px solid #c1ceda;border-radius:50%}.pin-dot.filled{background:#c1ceda}.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 38px;margin:auto 0 18px}.key{height:54px;border-radius:18px;background:#202a35;font-size:22px;font-weight:500}.key small{display:block;font-size:9px;color:#a7b2bf;letter-spacing:.1em}.key.blank{visibility:hidden}.pin-actions{display:flex;justify-content:space-between;padding:0 25px 24px;font-size:12px;color:#b8c5d3}.pin-actions button{background:none;color:inherit}.settings-line{padding:12px 0;border-bottom:1px solid #2b3540}.settings-line:last-child{border:0}
+@media(max-width:430px){body{padding:0;background:#101419}.wrap{width:100%}.caption{display:none}.phone{height:100dvh;min-height:560px;border:0;border-radius:0;box-shadow:none}.phone:before{top:7px}.status{padding-top:12px}.screen{height:calc(100% - 61px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="caption">PERSONAL DEVICE · TAEWON SONG</p>
+<div class="phone">
+  <div class="status"><span id="statusTime">19:41</span><span class="status-right"><span>▮▮▮</span><span>⌁</span><span>▰</span><span>▰</span></span></div>
+  <main class="screen" id="screen"></main>
+  <div class="navbar"><div class="gesture"></div></div>
+  <div class="lock-overlay" id="pinOverlay">
+    <div class="pin-top"><div style="font-size:25px">◈</div><div class="pin-title" id="pinTitle">비밀번호 입력</div><div class="pin-sub" id="pinSub">휴대전화 잠금을 해제하세요.</div><div class="pin-dots" id="pinDots"></div></div>
+    <div class="keypad" id="keypad"></div>
+    <div class="pin-actions"><button id="hintBtn">비밀번호 힌트</button><button id="cancelPin">취소</button></div>
+  </div>
+  <div class="toast" id="toast"></div>
+</div>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const defaultData = {
+  pin:"1910", hint:"기본 비밀번호는 1910. 설정에서 바꿀 수 있습니다.",
+  notes:[
+    {title:"업무 메모",body:"- 보고 자료 최종 확인\n- 회의 일정 재확인\n- 현장 담당자에게 회신\n\n놓치는 일이 없도록 하나씩 처리할 것."},
+    {title:"기억할 것",body:"필요한 말은 미루지 말고 전할 것.\n상대가 알아서 알 거라고 생각하지 말 것."}
+  ],
+  messages:[
+    {name:"성현제",sub:"세성길드장",avatar:"成",kind:"gold",preview:"송 실장, 아직 사무실인가?",time:"19:32",messages:[
+      ["them","송 실장, 아직 사무실인가?","19:32"],["me","곧 퇴근할 예정입니다.","19:33"],["them","그렇다면 저녁은 먹었나?","19:34"],["me","아직입니다. 업무를 마무리하고 먹겠습니다.","19:35"],["them","그 순서가 반대여야 할 것 같은데.","19:36"]]},
+    {name:"관리실 당직방",sub:"단체 대화 · 4명",avatar:"관",kind:"green",preview:"내일 일정 공유드립니다.",time:"18:04",messages:[
+      ["them","내일 오전 현장 점검 일정 공유드립니다.","18:04"],["me","확인했습니다. 변경 사항이 있으면 알려 주십시오.","18:06"]]},
+    {name:"어머니",sub:"연락처",avatar:"母",kind:"",preview:"밥은 챙겨 먹었니?",time:"어제",messages:[
+      ["them","밥은 챙겨 먹었니?","어제"],["me","네. 걱정하지 않으셔도 됩니다.","어제"]]}
+  ],
+  contacts:[["성현제","세성길드장 · 즐겨찾기","成","gold"],["관리실 당직방","각성자관리실","관","green"],["어머니","가족","母",""]],
+  calls:[["성현제","수신 전화","오늘 18:42"],["관리실 당직방","발신 전화","오늘 16:10"],["어머니","수신 전화","어제 20:15"]],
+  posts:[
+    {user:"taewon.s",time:"3시간 전",caption:"현장 점검 완료. 모두 수고하셨습니다.",image:"FIELD NOTES"},
+    {user:"taewon.s",time:"어제",caption:"퇴근길. 오늘은 이 정도면 충분하다.",image:"AFTER WORK"}
+  ],
+  events:[{date:19,time:"09:00",title:"주간 업무 보고",desc:"관리실 회의실"},{date:19,time:"14:00",title:"현장 점검 결과 확인",desc:"관련 자료 검토"},{date:20,time:"10:30",title:"유관기관 협의",desc:"회의 자료 지참"}]
+};
+let data;
+try {
+  const saved = JSON.parse(localStorage.getItem("taewonPhone") || "null");
+  data = saved && typeof saved === "object" ? {...defaultData, ...saved} : {...defaultData};
+  if (typeof data.pin !== "string" || !/^\\d{4}$/.test(data.pin)) data.pin = defaultData.pin;
+} catch(e) {
+  data = {...defaultData};
+}
+let currentApp="home", selectedChat=0, pinEntry="", pinMode="unlock", noteEdit=-1, calendarMonth=9, calendarYear=2026;
+function save(){localStorage.setItem("taewonPhone",JSON.stringify(data))}
+function timeNow(){let d=new Date();return d.toLocaleTimeString("ko-KR",{hour:"2-digit",minute:"2-digit",hour12:false})}
+function updateStatus(){$("statusTime").textContent=timeNow()}
+updateStatus();setInterval(updateStatus,30000);
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function avatar(letter,kind=""){return `<div class="avatar ${kind}">${esc(letter)}</div>`}
+function goHome(){currentApp="home";render()}
+function appHeader(title,subtitle=""){return `<div class="app-header"><button class="back" onclick="goHome()">‹</button><div><div class="app-title">${title}</div><div class="app-subtitle">${subtitle}</div></div></div>`}
+function openApp(app){currentApp=app;render()}
+function render(){
+ const s=$("screen");
+ if(currentApp==="home"){s.innerHTML=homeHTML();return}
+ if(currentApp==="messages"){s.innerHTML=messagesHTML();return}
+ if(currentApp==="chat"){s.innerHTML=chatHTML();return}
+ if(currentApp==="gallery"){s.innerHTML=galleryHTML();return}
+ if(currentApp==="phone"){s.innerHTML=phoneHTML();return}
+ if(currentApp==="notes"){s.innerHTML=notesHTML();return}
+ if(currentApp==="noteedit"){s.innerHTML=noteEditHTML();return}
+ if(currentApp==="social"){s.innerHTML=socialHTML();return}
+ if(currentApp==="calendar"){s.innerHTML=calendarHTML();return}
+ if(currentApp==="settings"){s.innerHTML=settingsHTML();return}
+}
+function homeHTML(){return `<div class="home"><div class="home-date">${new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"})}</div><div class="home-clock">${timeNow()}</div><div class="greeting">오늘도 수고 많으셨습니다.</div><div class="searchbar"><span>⌕</span><span>검색</span><span style="margin-left:auto">◉</span></div><div class="apps">
+${appIcon("messages","메신저","✉","g-messages")}${appIcon("gallery","사진첩","▧","g-gallery")}${appIcon("phone","전화","☎","g-phone")}${appIcon("notes","메모","▤","g-notes")}${appIcon("social","SNS","◎","g-social")}${appIcon("calendar","캘린더","▦","g-calendar")}${appIcon("settings","설정","⚙","g-settings")}
+</div><div class="dock">${appIcon("phone","전화","☎","g-phone",true)}${appIcon("messages","메신저","✉","g-messages",true)}${appIcon("gallery","사진첩","▧","g-gallery",true)}${appIcon("settings","설정","⚙","g-settings",true)}</div><div class="home-footer">T. SONG · 개인 기기</div></div>`}
+function appIcon(id,label,glyph,cls,dock=false){return `<button class="app-icon" onclick="openApp('${id}')" aria-label="${label}"><span class="glyph ${cls}">${glyph}</span>${dock?"":`<span class="app-label">${label}</span>`}</button>`}
+function messagesHTML(){return `<div class="appview">${appHeader("메시지","최근 대화")}<div class="app-body"><div class="card"><div style="font-size:12px;color:#c5d2df">중요한 연락을 놓치지 않도록 확인하세요.</div></div>${data.messages.map((c,i)=>`<button style="width:100%;background:none;text-align:left;padding:0" onclick="selectedChat=${i};openApp('chat')"><div class="listrow">${avatar(c.avatar,c.kind)}<div class="grow"><strong>${esc(c.name)}</strong><p>${esc(c.preview)}</p></div><span class="muted">${esc(c.time)}</span></div></button>`).join("")}</div></div>`}
+function chatHTML(){let c=data.messages[selectedChat];return `<div class="appview">${appHeader(c.name,c.sub)}<div class="app-body" id="chatScroll"><div class="chatdate">오늘</div>${c.messages.map(m=>`<div class="bubble ${m[0]}">${esc(m[1])}<div style="font-size:9px;opacity:.65;text-align:right;margin-top:3px">${esc(m[2])}</div></div>`).join("")}</div><form class="message-compose" onsubmit="sendMessage(event)"><input id="messageInput" placeholder="메시지 입력" autocomplete="off"><button class="send" type="submit">↑</button></form></div>`}
+function sendMessage(e){e.preventDefault();let input=$("messageInput"),v=input.value.trim();if(!v)return;data.messages[selectedChat].messages.push(["me",v,timeNow()]);data.messages[selectedChat].preview=v;data.messages[selectedChat].time=timeNow();save();render();$("chatScroll").scrollTop=$("chatScroll").scrollHeight}
+function galleryHTML(){return `<div class="appview">${appHeader("사진첩","최근 항목 · 4개")}<div class="app-body"><div class="muted" style="margin-bottom:14px">기록해 둔 순간</div><div class="gallery-grid"><div class="photo" onclick="photoDetail('퇴근길의 하늘')"><span>퇴근길의 하늘</span></div><div class="photo" onclick="photoDetail('조용한 오후')"><span>조용한 오후</span></div><div class="photo" onclick="photoDetail('현장 기록')"><span>현장 기록</span></div><div class="photo" onclick="photoDetail('기억해 둘 풍경')"><span>기억해 둘 풍경</span></div></div><p class="muted" style="margin-top:15px;line-height:1.6">사진은 이 가상 휴대폰의 분위기를 위한 예시 이미지입니다. 실제 사진 파일을 넣도록 확장할 수 있어요.</p></div></div>`}
+function photoDetail(name){toast(name+" · 예시 사진")}
+function phoneHTML(){return `<div class="appview">${appHeader("전화","최근 통화 및 연락처")}<div class="app-body"><div class="card"><div style="font-size:12px;color:#bdc9d6;margin-bottom:10px">즐겨찾기</div><div class="row">${avatar("成","gold")}<div><strong style="font-size:13px">성현제</strong><div class="muted">세성길드장</div></div><button class="secondary" style="margin-left:auto" onclick="toast('가상 전화 기능입니다.')">☎ 전화</button></div></div><div class="section-title">최근 통화</div>${data.calls.map(c=>`<div class="listrow">${avatar(c[0]==="성현제"?"成":c[0]==="어머니"?"母":"관",c[0]==="성현제"?"gold":"")}<div class="grow"><strong>${esc(c[0])}</strong><p>${esc(c[1])}</p></div><span class="muted">${esc(c[2])}</span></div>`).join("")}<div class="section-title">연락처</div>${data.contacts.map(c=>`<div class="listrow">${avatar(c[2],c[3])}<div class="grow"><strong>${esc(c[0])}</strong><p>${esc(c[1])}</p></div><button class="secondary" onclick="toast('가상 연락처입니다.')">연락</button></div>`).join("")}</div></div>`}
+function notesHTML(){return `<div class="appview">${appHeader("메모","개인 메모")}<div class="app-body"><button class="primary" onclick="noteEdit=-1;openApp('noteedit')" style="width:100%">＋ 새 메모</button><div class="section-title">모든 메모 · ${data.notes.length}</div>${data.notes.map((n,i)=>`<button style="width:100%;text-align:left;background:none;padding:0" onclick="noteEdit=${i};openApp('noteedit')"><div class="card"><strong style="font-size:13px">${esc(n.title)}</strong><p class="muted" style="white-space:pre-line;line-height:1.6">${esc(n.body.slice(0,95))}${n.body.length>95?"…":""}</p></div></button>`).join("")}</div></div>`}
+function noteEditHTML(){let n=noteEdit>=0?data.notes[noteEdit]:{title:"",body:""};return `<div class="appview">${appHeader(noteEdit>=0?"메모 편집":"새 메모","저장하면 이 기기에 보관됩니다.")}<div class="app-body"><label class="field-label">제목</label><input class="field" id="noteTitle" value="${esc(n.title)}" placeholder="메모 제목"><label class="field-label">내용</label><textarea class="field" id="noteBody" rows="10" placeholder="내용을 입력하세요" style="resize:vertical">${esc(n.body)}</textarea><button class="primary" style="width:100%" onclick="saveNote()">저장</button>${noteEdit>=0?`<button class="secondary" style="width:100%;margin-top:9px" onclick="deleteNote()">삭제</button>`:""}</div></div>`}
+function saveNote(){let title=$("noteTitle").value.trim()||"제목 없는 메모",body=$("noteBody").value;if(noteEdit>=0)data.notes[noteEdit]={title,body};else data.notes.unshift({title,body});save();openApp("notes");toast("메모를 저장했습니다.")}
+function deleteNote(){if(noteEdit>=0){data.notes.splice(noteEdit,1);save();openApp("notes");toast("메모를 삭제했습니다.")}}
+function socialHTML(){return `<div class="appview">${appHeader("소셜","taewon.s · 비공개 계정")}<div class="app-body"><div class="card"><div class="row">${avatar("宋","green")}<div><strong style="font-size:13px">taewon.s</strong><div class="muted">조용히 기록하는 일상</div></div><span style="margin-left:auto;color:#aebdcb">•••</span></div></div>${data.posts.map(p=>`<div class="social-post"><div class="post-head">${avatar("宋","green")}<div><strong style="font-size:12px">${esc(p.user)}</strong><div class="muted">${esc(p.time)}</div></div></div><div class="post-image">${esc(p.image)}</div><div class="post-copy"><div style="margin-bottom:7px">♡　○　↗</div>${esc(p.caption)}</div></div>`).join("")}<button class="secondary" style="width:100%" onclick="newPost()">＋ 기록 추가</button></div></div>`}
+function newPost(){let caption=prompt("기록할 내용을 입력하세요.");if(!caption)return;data.posts.unshift({user:"taewon.s",time:"방금",caption,image:"NEW NOTE"});save();render();toast("새 기록을 추가했습니다.")}
+function calendarHTML(){let first=new Date(calendarYear,calendarMonth,1),days=new Date(calendarYear,calendarMonth+1,0).getDate(),offset=first.getDay();let cells=["일","월","화","수","목","금","토"].map(x=>`<div class="weekday">${x}</div>`).join("");for(let i=0;i<offset;i++)cells+="<div></div>";for(let d=1;d<=days;d++)cells+=`<div class="${d===19&&calendarMonth===9&&calendarYear===2026?"today":data.events.some(e=>e.date===d)?"eventday":""}" onclick="showDay(${d})">${d}</div>`;return `<div class="appview">${appHeader("캘린더","일정 관리")}<div class="app-body"><div class="calendar-head"><button class="secondary" onclick="changeMonth(-1)">‹</button><strong>${calendarYear}년 ${calendarMonth+1}월</strong><button class="secondary" onclick="changeMonth(1)">›</button></div><div class="calendar-grid">${cells}</div><div class="section-title">예정된 일정</div>${data.events.map(e=>`<div class="event"><div class="event-time">${String(e.date).padStart(2,"0")}일<br>${esc(e.time)}</div><div><div class="event-title">${esc(e.title)}</div><div class="event-desc">${esc(e.desc)}</div></div></div>`).join("")}<button class="secondary" style="width:100%;margin-top:14px" onclick="addEvent()">＋ 일정 추가</button></div></div>`}
+function changeMonth(n){calendarMonth+=n;if(calendarMonth<0){calendarMonth=11;calendarYear--}if(calendarMonth>11){calendarMonth=0;calendarYear++}render()}
+function showDay(d){toast(calendarMonth+1+"월 "+d+"일")}
+function addEvent(){let title=prompt("일정 이름을 입력하세요.");if(!title)return;let date=parseInt(prompt("날짜를 입력하세요 (1~31)", "21"),10);if(!date||date<1||date>31){toast("날짜를 확인해 주세요.");return}let time=prompt("시간을 입력하세요","10:00")||"시간 미정";data.events.push({date,time,title,desc:"직접 추가한 일정"});save();render();toast("일정을 추가했습니다.")}
+function settingsHTML(){return `<div class="appview">${appHeader("설정","개인 기기 설정")}<div class="app-body"><div class="card"><div class="row">${avatar("宋","green")}<div><strong style="font-size:14px">송태원</strong><div class="muted">개인 휴대전화 · Android</div></div></div></div><div class="section-title">잠금 및 보안</div><div class="card"><div class="settings-line"><div style="font-size:13px;font-weight:600">잠금 비밀번호 변경</div><div class="muted" style="margin:5px 0 10px">현재 PIN을 확인한 뒤 새 비밀번호를 설정합니다.</div><button class="secondary" onclick="startPin('change')">비밀번호 변경</button></div><div class="settings-line"><div style="font-size:13px;font-weight:600">비밀번호 힌트</div><div class="muted" style="margin:5px 0 10px">${esc(data.hint)}</div><button class="secondary" onclick="editHint()">힌트 수정</button></div></div><div class="section-title">데이터</div><div class="card"><div class="muted" style="line-height:1.7">메모, 대화에 추가한 메시지, SNS 기록과 일정은 현재 브라우저의 로컬 저장소에 저장됩니다. 다른 기기나 브라우저와 자동으로 동기화되지 않습니다.</div><button class="secondary" style="margin-top:12px" onclick="resetDemo()">예시 데이터 초기화</button></div><div class="section-title">기기 정보</div><div class="card"><div class="listrow"><span class="grow"><strong>기기 이름</strong></span><span class="muted">T. SONG</span></div><div class="listrow"><span class="grow"><strong>운영체제</strong></span><span class="muted">Android-style web prototype</span></div></div></div></div>`}
+function editHint(){let h=prompt("비밀번호 힌트를 입력하세요.",data.hint);if(h===null)return;data.hint=h;save();render();toast("힌트를 저장했습니다.")}
+function resetDemo(){if(!confirm("메모와 추가한 대화·게시물·일정을 예시 데이터로 초기화할까요? 비밀번호 설정은 유지됩니다."))return;let pin=data.pin,hint=data.hint;data={...defaultData,pin,hint};save();render();toast("예시 데이터를 초기화했습니다.")}
+function toast(msg){let t=$("toast");t.textContent=msg;t.style.display="block";clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display="none",2500)}
+function startPin(mode){
+  pinMode=mode;
+  pinEntry="";
+  $("pinOverlay").style.display="flex";
+  $("pinTitle").textContent=mode==="unlock"?"비밀번호 입력":mode==="change"?"현재 비밀번호 확인":"새 비밀번호 설정";
+  $("pinSub").textContent=mode==="unlock"?"휴대전화 잠금을 해제하세요.":"본인 확인을 위해 PIN을 입력하세요.";
+  renderDots();
+  renderKeys();
+}
+function renderDots(){
+  $("pinDots").innerHTML=Array.from({length:4},(_,i)=>
+    `<span class="pin-dot ${i<pinEntry.length?"filled":""}"></span>`
+  ).join("");
+}
+function renderKeys(){
+  $("keypad").innerHTML=["1","2","3","4","5","6","7","8","9","","0","⌫"].map(k=>
+    k ? `<button type="button" class="key" onclick="keyPress('${k}')">${k==="⌫"?"⌫":k}</button>`
+      : `<button type="button" class="key blank" tabindex="-1"></button>`
+  ).join("");
+}
+function keyPress(k){
+  if(k==="⌫"){
+    pinEntry=pinEntry.slice(0,-1);
+    renderDots();
+    return;
+  }
+  if(!/^\\d$/.test(k) || pinEntry.length>=4) return;
+  pinEntry+=k;
+  renderDots();
+  if(pinEntry.length===4){
+    setTimeout(checkPin,130);
+  }
+}
+function checkPin(){
+  const entered=pinEntry;
+  pinEntry="";
+  renderDots();
+
+  if(pinMode==="unlock"){
+    if(entered===String(data.pin)){
+      pinMode="unlock";
+      pinEntry="";
+      currentApp="home";
+      $("pinOverlay").style.display="none";
+      render();
+      toast("잠금이 해제되었습니다.");
+      return;
+    }
+    $("pinSub").textContent="비밀번호가 올바르지 않습니다. 다시 입력하세요.";
+    return;
+  }
+
+  if(pinMode==="change"){
+    if(entered!==String(data.pin)){
+      $("pinSub").textContent="현재 비밀번호가 올바르지 않습니다.";
+      return;
+    }
+    pinMode="newpin";
+    $("pinTitle").textContent="새 비밀번호 설정";
+    $("pinSub").textContent="새로운 네 자리 숫자를 입력하세요.";
+    renderDots();
+    renderKeys();
+    return;
+  }
+
+  if(pinMode==="newpin"){
+    if(!/^\\d{4}$/.test(entered)){
+      $("pinSub").textContent="네 자리 숫자를 입력하세요.";
+      return;
+    }
+    data.pin=entered;
+    save();
+    $("pinOverlay").style.display="none";
+    pinMode="unlock";
+    toast("비밀번호를 변경했습니다.");
+  }
+}
+$("hintBtn").addEventListener("click",()=>{
+  $("pinSub").textContent=data.hint || "기본 비밀번호는 1910입니다.";
+});
+$("cancelPin").addEventListener("click",()=>{
+  $("pinOverlay").style.display="none";
+  pinEntry="";
+  pinMode="unlock";
+  if(currentApp==="home") render();
+});
+/* Lock screen opens on a tap; default PIN is 1910. */
+function lockScreen(){return `<div class="wallpaper"><div class="lock-content"><div class="lock-date">${new Date().toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"})}</div><div class="lock-time">${timeNow()}</div><div class="lock-quote">해야 할 일을 마쳤다면,<br>오늘은 여기까지 해도 괜찮다.</div><div class="lock-spacer"></div><div class="lock-bottom"><div class="hint">잠금을 해제하려면 아래 버튼을 누르세요</div><button class="unlock-btn" onclick="startPin('unlock')">잠금 해제　⌁</button><div class="small-note">비밀번호 힌트는 잠금 화면에서 확인할 수 있습니다.</div></div></div></div>`}
+function initialLock(){ $("screen").innerHTML=lockScreen(); }
+initialLock();
+</script>
+</body>
+</html>
